@@ -18,9 +18,11 @@ public class RockPaperScissorsFrame extends JFrame {
     JLabel winsLbl;
     JLabel lossesLbl;
     JLabel drawsLbl;
+    JLabel totalLbl;
     TextArea winsTxt;
     TextArea lossesTxt;
     TextArea drawsTxt;
+    TextArea totalTxt;
     TextArea resultTxt;
     JScrollPane resultPane;
     Boolean empty = true;
@@ -54,22 +56,27 @@ public class RockPaperScissorsFrame extends JFrame {
         mainPnl.add(btnPnl);
 
         statsPnl = new JPanel();
-        statsPnl.setLayout(new GridLayout(1,6));
-        winsLbl = new JLabel("Player Wins: ");
+        statsPnl.setLayout(new GridLayout(1,8));
+        winsLbl = new JLabel("Player Wins:");
         winsTxt = new TextArea("0",1,3);
         winsTxt.setEditable(false);
-        lossesLbl = new JLabel("Computer Wins: ");
+        lossesLbl = new JLabel("Computer Wins:");
         lossesTxt = new TextArea("0",1,3);
         lossesTxt.setEditable(false);
         drawsLbl = new JLabel("Ties: ");
         drawsTxt = new TextArea("0",1,3);
         drawsTxt.setEditable(false);
+        totalLbl = new JLabel("Total Games:");
+        totalTxt = new TextArea("0",1,3);
+        totalTxt.setEditable(false);
         statsPnl.add(winsLbl);
         statsPnl.add(winsTxt);
         statsPnl.add(lossesLbl);
         statsPnl.add(lossesTxt);
         statsPnl.add(drawsLbl);
         statsPnl.add(drawsTxt);
+        statsPnl.add(totalLbl);
+        statsPnl.add(totalTxt);
         mainPnl.add(statsPnl);
 
         outPnl = new JPanel();
@@ -153,5 +160,6 @@ public class RockPaperScissorsFrame extends JFrame {
                 resultTxt.append("Scissors matches Scissors (Tie)");
             }
         }
+        totalTxt.setText(Integer.toString(wins+losses+draws));
     }
 }
